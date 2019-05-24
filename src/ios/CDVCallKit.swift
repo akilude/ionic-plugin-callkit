@@ -44,7 +44,7 @@
     }
 
     @available(iOS 10.0, *)
-    func register(_ command:CDVInvokedUrlCommand) {
+    @objc func register(_ command:CDVInvokedUrlCommand) {
         self.commandDelegate.run(inBackground: {
             var pluginResult = CDVPluginResult(
                 status : CDVCommandStatus_ERROR
@@ -75,7 +75,7 @@
         NotificationCenter.default.removeObserver(self)
     }
 
-    func reportIncomingCall(_ command:CDVInvokedUrlCommand) {
+    @objc func reportIncomingCall(_ command:CDVInvokedUrlCommand) {
         var pluginResult = CDVPluginResult(
             status : CDVCommandStatus_ERROR
         )
@@ -113,12 +113,12 @@
         )
     }
 
-    func askNotificationPermission(_ command:CDVInvokedUrlCommand) {
+    @objc func askNotificationPermission(_ command:CDVInvokedUrlCommand) {
         UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert], categories: nil))
     }
 
     @available(iOS 10.0, *)
-    func startCall(_ command:CDVInvokedUrlCommand) {
+    @objc func startCall(_ command:CDVInvokedUrlCommand) {
         var pluginResult = CDVPluginResult(
             status : CDVCommandStatus_ERROR
         )
@@ -141,7 +141,7 @@
         )
     }
 
-    func finishRing(_ command:CDVInvokedUrlCommand) {
+    @objc func finishRing(_ command:CDVInvokedUrlCommand) {
         let pluginResult = CDVPluginResult(
             status : CDVCommandStatus_OK
         )
@@ -155,7 +155,7 @@
     }
 
     @available(iOS 10.0, *)
-    func endCall(_ command:CDVInvokedUrlCommand) {
+    @objc func endCall(_ command:CDVInvokedUrlCommand) {
         self.commandDelegate.run(inBackground: {
             let uuid = UUID(uuidString: command.arguments[0] as? String ?? "")
 
@@ -170,7 +170,7 @@
     }
 
     @available(iOS 10.0, *)
-    func callConnected(_ command:CDVInvokedUrlCommand) {
+    @objc func callConnected(_ command:CDVInvokedUrlCommand) {
         self.commandDelegate.run(inBackground: {
             let uuid = UUID(uuidString: command.arguments[0] as? String ?? "")
 
