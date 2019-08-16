@@ -75,12 +75,17 @@
         NotificationCenter.default.removeObserver(self)
     }
 
+    @objc func reportIncomingCall(uuid: UUID, name: String, hasVideo: Bool, supportsGroup: Bool, supportsUngroup: Bool, supportsDTMF: Bool, supportsHold: Bool) {
+            providerDelegate?.reportIncomingCall(uuid,handle: name,hasVideo: hasVideo,supportsGroup: supportsGroup, supportsUngroup: supportsUngroup,supportsDTMF: supportsDTMF, supportsHold: supportsHold)
+    }
+    
     @objc func reportIncomingCall(_ command:CDVInvokedUrlCommand) {
         var pluginResult = CDVPluginResult(
             status : CDVCommandStatus_ERROR
         )
 
         let uuid = UUID()
+        print("UUID \(uuid)")
         let name = command.arguments[0] as? String ?? ""
         let hasVideo = command.arguments[1] as? Bool ?? false
         let supportsGroup = command.arguments[2] as? Bool ?? false
@@ -158,7 +163,7 @@
     @objc func endCall(_ command:CDVInvokedUrlCommand) {
         self.commandDelegate.run(inBackground: {
             let uuid = UUID(uuidString: command.arguments[0] as? String ?? "")
-
+            
             if (uuid != nil) {
                 let call = self.callManager?.callWithUUID(uuid!)
 
