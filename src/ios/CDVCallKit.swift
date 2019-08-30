@@ -75,7 +75,7 @@
         NotificationCenter.default.removeObserver(self)
     }
 
-    @objc func reportIncomingCall(uuid: UUID, name: String, hasVideo: Bool, supportsGroup: Bool, supportsUngroup: Bool, supportsDTMF: Bool, supportsHold: Bool) {
+    @objc func reportIncomingCall(with uuid: UUID, name: String, hasVideo: Bool, supportsGroup: Bool, supportsUngroup: Bool, supportsDTMF: Bool, supportsHold: Bool) {
             providerDelegate?.reportIncomingCall(uuid,handle: name,hasVideo: hasVideo,supportsGroup: supportsGroup, supportsUngroup: supportsUngroup,supportsDTMF: supportsDTMF, supportsHold: supportsHold)
     }
     
