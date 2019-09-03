@@ -18,7 +18,7 @@
  */
 
 @available(iOS 9.0, *)
-@objc(CDVCallKit) class CDVCallKit : CDVPlugin {
+@objc(CDVCallKit) class CDVCallKit : CDVPlugin, CDVVoipPushDelegate {
     var callbackId: String?
     private var _callManager: AnyObject?
     private var _providerDelegate: AnyObject?
