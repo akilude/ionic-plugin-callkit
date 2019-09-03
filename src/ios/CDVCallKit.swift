@@ -50,6 +50,8 @@
                 status : CDVCommandStatus_ERROR
             )
 
+            CDVVoipPush.setDelegate(self);
+
             self.callManager = CDVCallManager()
 
             self.providerDelegate = CDVProviderDelegate(callManager: self.callManager!)
