@@ -18,7 +18,7 @@
  */
 
 @available(iOS 9.0, *)
-@objc(CDVCallKit) class CDVCallKit : CDVPlugin, CDVVoipPushDelegate {
+@objc(CDVCallKit) class CDVCallKit : CDVPlugin {
     var callbackId: String?
     private var _callManager: AnyObject?
     private var _providerDelegate: AnyObject?
@@ -49,8 +49,6 @@
             var pluginResult = CDVPluginResult(
                 status : CDVCommandStatus_ERROR
             )
-
-            CDVVoipPush.setDelegate(self);
 
             self.callManager = CDVCallManager()
 
@@ -100,7 +98,7 @@
             providerDelegate?.reportIncomingCall(uuid,handle: name,hasVideo: hasVideo,supportsGroup: supportsGroup, supportsUngroup: supportsUngroup,supportsDTMF: supportsDTMF, supportsHold: supportsHold)
         } else {
             // iOS 9: if the application is in background, show a notification
-            if (UIApplication.shared.applicationState == UIApplicationState.background) {
+            if (UIApplication.shared.applicationState == UIApplication.State.background) {
                 let localNotification = UILocalNotification()
                 localNotification.fireDate = NSDate(timeIntervalSinceNow: 1) as Date
                 localNotification.alertBody = name
