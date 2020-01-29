@@ -214,3 +214,9 @@ You can use the tag `<resource-file>` in config.xml (*since cordova-ios 4.4.0*) 
     [...]
 </platform>
 ```
+
+
+
+## Authors
+1. Taracque <taracque@taracque.hu>
+2. VinceOPS <vince.g.135@gmail.com>

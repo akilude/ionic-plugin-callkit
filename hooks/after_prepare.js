@@ -6,7 +6,7 @@ path = require('path');
 module.exports = function (context) {
 
   return new Promise((resolve, reject)=>{
-    var xcode = context.requireCordovaModule('xcode');
+    var xcode = require('xcode');
 
     if (context.opts.cordova.platforms.indexOf('ios') < 0) {
       throw new Error('This plugin expects the ios platform to exist.');

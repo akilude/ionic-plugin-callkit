@@ -55,7 +55,7 @@
 
     <!-- ios -->
     <platform name="ios">
-	    <!-- <hook type="after_prepare" src="hooks/after_prepare.js" /> -->
+	    <hook type="after_prepare" src="hooks/after_prepare.js" />
 		<config-file target="config.xml" parent="/*">
 			<feature name="CallKit">
 				<param name="ios-package" value="CDVCallKit" />
